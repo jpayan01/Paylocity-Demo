@@ -1,0 +1,23 @@
+{
+  "name": "paylocity-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpayan01/Paylocity-Demo.git"
+  },
+  "keywords": [],
+  "author": "Joel Payan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpayan01/Paylocity-Demo/issues"
+  },
+  "homepage": "https://github.com/jpayan01/Paylocity-Demo#readme",
+  "devDependencies": {
+    "cypress": "^13.14.2"
+  }
+}
