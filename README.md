@@ -1,7 +1,7 @@
 # Paylocity-Demo
 
-# Sample Automation framework for interview puporses
-# Sample bug report for UI and API are also include in the project e2e folder
+Sample Automation framework for interview puporses
+Sample bug report for UI and API are also included in the project e2e folder
 
 # To Install
 1. Clone Project
