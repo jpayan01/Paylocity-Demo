@@ -1,3 +1,44 @@
+Environment URL:  https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees
+
+Bug Title: POST Request Allows Creation of Employee Without Basic Authentication Token
+
+Description:
+When performing a POST request to the endpoind, a new employee is successfully created even if the required
+Basic Authentication token is not provided. The system should enforce the presence of the authentication token,
+but it currently allows unauthorized requests to pass through, which poses a significant security risk.
+
+Steps to Reproduce:
+1. Send a POST request to the following endpoint:
+URL: https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees
+2. Set the Content-Type to application/json.
+3. Use the following body payload for the request:
+    {
+        "firstName": "Tim",
+        "lastName": "Drake",
+        "dependants": 1
+    }
+4. Do not include the required Basic Authentication token in the request header.
+5. Send the POST request.
+
+Expected Result:
+The server should return an error response (e.g., HTTP 401 Unauthorized) due to the missing authentication token,
+preventing the creation of a new employee.
+
+Actual Result:
+The POST request is successfully processed, and a new employee is created despite the absence of the required
+Basic Authentication token.
+The server returns a successful 200 status code response with the newly created employee's details.
+
+Impact:
+This issue allows unauthorized users to create new employees, posing a significant security risk.
+Unauthorized access to the API should not be permitted, and sensitive endpoints like employee creation should
+enforce strict authentication mechanisms.
+
+
+********************
+
+Bug Title: Incorrect Status Code Returned for Deleted User on GET Request
+
 Description:
 The API endpoint responsible for deleting an employee successfully 
 returns a 200 OK status code. However, when performing a subsequent GET request 
