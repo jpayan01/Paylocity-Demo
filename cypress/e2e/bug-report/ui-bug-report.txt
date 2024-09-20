@@ -1,0 +1,27 @@
+Description:
+The UI allows the creation of a new employee when only a single character is entered for first name
+and last name inputs. While it is acceptable to allow names with accents or special characters, 
+the system should not permit first or last names that are just a single letter or digit. 
+This validation issue could lead to improper data being saved in the system.
+
+Steps to Reproduce:
+1. Login to application
+2. Click 'Add Employee' button
+3. Enter a single character (e.g., "A" or "." - or any other symbol) in the First Name input.
+4. Enter a single character (e.g., "B" or "." - or any other symbol) in the Last Name input.
+5. Fill out any other required fields (e.g., dependents) and click Add button.
+
+Expected Result:
+The system should not allow submission with only a single character in the First Name and Last Name fields.
+An error message should be displayed indicating that the name must be longer than a single character
+(e.g., "First name and last name must contain at least 2 characters").
+
+Actual Result:
+The system allows the creation of a new employee with single-character names 
+(e.g., "A" for first name, "B" for last name). No validation error is triggered,
+and the user is successfully created in the system.
+
+Impact:
+This issue allows invalid employee names to be entered into the system, which can lead 
+to inaccurate data and complications during employee management. Proper validation should be 
+in place to prevent such short, potentially erroneous names.

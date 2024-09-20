@@ -1,0 +1,39 @@
+Description:
+The API endpoint responsible for deleting an employee successfully 
+returns a 200 OK status code. However, when performing a subsequent GET request 
+to validate the user no longer exists, the server incorrectly returns a 200 OK status code 
+instead of the expected 404 Not Found status code.
+
+Steps to Reproduce:
+Send a DELETE request to the following API endpoint to delete an existing user:
+
+URL: https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees/{userID}
+Method: DELETE
+Example userID: 1945d706-39f3-49eb-bea8-98abcf766e5e
+Confirm that the deletion request is successful, returning a 200 OK status code.
+
+Send a GET request to verify that the deleted user no longer exists:
+
+URL: https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees/{userID}
+Method: GET
+Example userID: 1945d706-39f3-49eb-bea8-98abcf766e5e
+
+Expected Result:
+The server should return a 404 Not Found status code, indicating that the user has been deleted 
+and no longer exists in the database.
+
+Actual Result:
+The server returns a 200 OK status code, incorrectly indicating that the user still exists, 
+even though the user has been deleted.
+
+Impact:
+This issue creates confusion during automated API testing and manual validation, as it falsely 
+confirms the presence of a deleted resource. It also violates standard REST API conventions, 
+where a 404 response is expected when attempting to retrieve a non-existent resource.
+Ensure proper handling of deleted resources and fix the incorrect status code to align with REST API best practices.
+
+Environment:
+API URL: https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees
+Method: DELETE / GET
+UserID Example: 1945d706-39f3-49eb-bea8-98abcf766e5e
+
