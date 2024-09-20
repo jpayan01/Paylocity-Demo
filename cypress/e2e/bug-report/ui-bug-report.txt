@@ -1,3 +1,83 @@
+Environment Url: https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits
+Browser: Chrome browser
+Platform: Windows 11 (or any other where tested)
+
+Bug Title: Incorrect First and Last Name display on employee Dashboard
+after Adding Employee
+
+Description:
+When a user adds a new employee, the first and last name fields are swapped on the
+employee dashboard. Specifically, after filling out the first name and last name inputs
+and clicking the "Add" button, the newly added employee is displayed in the dashboard
+with the first name shown under the "Last Name" column and the last name shown
+under the "First Name" column.
+
+Steps to Reproduce:
+1. Navigate to the Paylocity Benefits Dashboard.
+2. Click the "Add Employee" button.
+3. In the Add Employee modal, fill out the following fields:
+4. First Name: (e.g., "Bruce")
+5. Last Name: (e.g., "Wayne")
+6. Dependents: 1 (or any other number)
+7. Click the "Add" button to submit the form.
+8. Observe the dashboard where the newly added employee is displayed.
+
+Expected Result:
+The First Name should appear in the "First Name" column.
+The Last Name should appear in the "Last Name" column.
+
+Actual Result:
+The First Name is displayed in the "Last Name" column.
+The Last Name is displayed in the "First Name" column.
+
+Impact:
+This issue creates confusion for users trying to view employee details from the dashboard,
+as it causes incorrect labeling of employee names. This can lead to data inconsistency
+and errors in employee management.
+
+************************************
+
+Bug Title: Lack of Validation Message for '0' Dependents When Adding a New Employee
+
+Description:
+When a user adds a new employee and enters '0' as the number of dependents,
+the system allows the entry without providing any validation message or clarification
+on whether dependents are required. The UI does not indicate if having at least one
+dependent is mandatory, or if '0' is an acceptable value. This creates confusion for the
+user about whether the "Dependents" field is optional or has a minimum requirement.
+
+Steps to Reproduce:
+1. Navigate to the Paylocity Benefits Dashboard.
+2. Click the "Add Employee" button.
+3. In the Add Employee modal, fill out the following fields:
+4. First Name: (e.g., "John")
+5. Last Name: (e.g., "Doe")
+6. Dependents: Enter '0'.
+7. Click the "Add" button to submit the form.
+8. Observe that the employee is successfully added with '0' dependents,
+without any validation or clarification on whether '0' dependents is acceptable.
+
+Expected Result:
+The system should display a clear validation message explaining whether '0' dependents are
+allowed or if at least one dependent is required. If dependents are mandatory, an error
+message should be shown (e.g., "Please enter at least one dependent"). If '0' dependents
+is acceptable, the UI should provide clarification (e.g., "It is allowed to have no
+dependents").
+
+Actual Result:
+The system allows the user to submit the form with '0' dependents without any validation
+or clarification on whether dependents are required. No feedback or error messages are
+provided to guide the user on valid input.
+
+Impact:
+This lack of clear messaging causes confusion for the user about the dependents field.
+It could lead to incorrect data entry if the system is intended to enforce a minimum
+number of dependents, or leaves users unsure about what values are valid for this field.
+
+******************************
+
+Bug Title: Invalid Employee Creation with Single Character First and Last Names
+
 Description:
 The UI allows the creation of a new employee when only a single character is entered for first name
 and last name inputs. While it is acceptable to allow names with accents or special characters, 
@@ -23,5 +103,38 @@ and the user is successfully created in the system.
 
 Impact:
 This issue allows invalid employee names to be entered into the system, which can lead 
-to inaccurate data and complications during employee management. Proper validation should be 
-in place to prevent such short, potentially erroneous names.
+to inaccurate data and complications during employee management. Proper validation should
+be in place to prevent such short, potentially erroneous names.
+
+******************************
+
+Bug Title: UI Layout Breaks When Adding Employee with Maximum Character Length for First Name and Last Name
+
+Description:
+When a user adds a new employee and enters the maximum allowable number of characters for both the First Name
+and Last Name fields, the UI layout breaks after the employee is added. Specifically, the table columns shrink,
+causing elements to become misaligned, and some parts of the UI appear 'offset'. This disrupts the display and
+readability of employee data on the dashboard page.
+
+Steps to Reproduce:
+1. Navigate to the Paylocity Benefits Dashboard.
+2. Click the "Add Employee" button.
+3. In the Add Employee modal, fill out the following fields:
+ > First Name: Enter a long string, such as "AutomationTesterTesterTesterTesterTesterTester".
+ > Last Name: Enter a long string, such as "TesterTesterTesterTesterTesterTesterTester".
+4. Fill in Dependents: Any valid number (e.g., 1).
+5. Click the "Add" button to submit the form.
+6. Observe how the UI is displayed after the new employee is added to the dashboard.
+
+Expected Result:
+The table columns should adjust dynamically or provide a mechanism (like text wrapping or truncation)
+to handle long names without affecting the overall UI layout. The table columns should remain aligned,
+and no elements should appear offset.
+
+Actual Result:
+The table columns shrink, causing the first and last name fields to overflow, which misaligns other columns.
+Some UI elements, including the Actions column, are misaligned and pushed out of place.
+
+Impact:
+This issue significantly reduces the usability and readability of the employee dashboard page when handling
+names with the maximum character limit, making it difficult for users to view and interact with the data.
